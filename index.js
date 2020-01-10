@@ -7,7 +7,11 @@ const {port, dbURI} = require('./config/environment');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-mongoose.connect(dbURI);
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
 
 const routes = require('./config/routes');
 

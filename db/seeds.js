@@ -4,7 +4,11 @@ const Bundle = require('../models/bundle');
 const User = require('../models/user');
 const { dbURI } = require('../config/environment');
 
-mongoose.connect(dbURI, (err, db) => {
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+}, (err, db) => {
   db.dropDatabase();
 
   User.create([{
